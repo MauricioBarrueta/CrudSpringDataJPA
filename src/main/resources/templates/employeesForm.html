@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="layout/layout :: head"></head>
+
+<body>
+    <nav th:replace="layout/layout :: navbar"></nav> <!-- Navbar and Input -->
+
+    <div class="container">
+        <span id="form-title">Formulario de empleados</span>
+        <form id="employee-form" th:action="@{/save}" th:object=${persona} method="POST">
+            <div class="mb-3"> <!-- Se pasa el Id para evitar que se creé un nuevo registro a la hora de querer modificar -->
+                <input type="hidden" th:field="*{id}">
+            </div>            
+            <div class="mb-3">
+                <label for="inOne" class="form-label">Nombre del empleado:</label>
+                <input type="text" class="form-control" id="inOne" th:field="*{nombre}" placeholder="Nombre completo:" required>
+            </div>
+            <div class="mb-3">
+                <label for="inTwo" class="form-label">Dirección:</label>
+                <input type="text" class="form-control" id="inTwo" aria-describedby="inpInfo" th:field="*{direccion}"
+                    placeholder="Dirección del domicilio:" required>
+                <div id="inpInfo" class="form-text">No compartiremos tu domicilio con nadie más</div>
+            </div>
+            <div class="mb-3">
+                <label for="inThree" class="form-label">Teléfono (celular o fijo):</label>
+                <input type="tel" class="form-control" id="inThree" th:field="*{telefono}" placeholder="Número de teléfono:" required>
+            </div>          
+            <div class="form-buttons">
+                <button type="submit" class="btn btn-success btn-save" title="Guardar"> Guardar</button>
+                <a th:href="@{/employees}" class="btn-home"> Volver al inicio</a>
+            </div>
+            
+        </form>
+    </div>    
+    <div th:replace="layout/layout :: scripts"></div>
+</body>
+</html>

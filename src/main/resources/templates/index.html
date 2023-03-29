@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head th:replace="layout/layout :: head"></head>
+    <body>
+        <nav th:replace="layout/layout :: navbar"></nav> <!-- Navbar and Input -->
+
+        <div class="container">
+            <h3 id="table-title">Empleados registrados:
+                <a th:href="@{/employees/actions/newEmployee/**}" class="btn btn-success btn-new"> Nuevo registro</a> <!-- Formulario -->
+            </h3>            
+            <table class="table table-dark table-striped">
+                <thead>
+                    <tr>
+                        <th>Código:</th>
+                        <th>Nombre(s):</th>
+                        <th>Dirección:</th>
+                        <th>Teléfono:</th>
+                        <th>Acciones:</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="persona:${personas}">                        
+                        <td th:text="${persona.id}"></td>
+                        <td th:text="${persona.Nombre}"></td>
+                        <td th:text="${persona.direccion}"></td>
+                        <td th:text="${persona.telefono}"></td>
+                        <td>
+                            <!-- Se concatena el Id a editar -->
+                            <a th:href="@{/employees/actions/updateEmployee=} + ${persona.id}" class="btn btn-warning act-edit" title="Modificar"></a>
+                            <!-- Muestra el Modal para confirmar la acción antes de ejecutarse -->
+                            <a th:attr="data-bs-target='#modal-warning' + ${persona.id}" class="btn btn-danger act-delete" data-bs-toggle="modal" title="Borrar"></a>
+                        </td>
+                        <div th:replace="layout/layout :: modal"></div> <!-- Modal de confirmación -->
+                    </tr>
+                </tbody>
+            </table>                                    
+        </div> 
+        <div th:insert="layout/layout :: scripts"></div>      
+    </body>
+</html>

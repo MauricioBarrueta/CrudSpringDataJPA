@@ -1,0 +1,53 @@
+
+<!-- Head -->
+<head th:fragment="head">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no"> 
+    
+    <!-- CSS Botstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <!-- Font Awesome Library -->    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <!-- Main Styles -->
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+
+    <title>API (Thymeleaf, Hibernate, JUnit5)</title>
+</head>
+
+<!-- Navbar -->
+<nav class="navbar bg-dark" th:fragment="navbar">
+    <div class="container-fluid">
+        <a class="navbar-brand" th:href="@{/employees}"> Lista de empleados</a>
+        <form class="d-flex" role="search" th:action="@{/employees/searchBy}" th:object="${persona}">          
+            <input class="form-control inp-filter" type="text" name="name" id="name" th:value="${name}" 
+                placeholder="Filtrar lista por nombre de empleado:">
+            <button class="btn btn-light btn-filter" type="submit" title="Buscar"></button>
+        </form>
+    </div>
+</nav>
+
+<!-- Confirmation Modal -->
+<div th:fragment="modal" class="modal modal-warning fade in" th:id="modal-warning + ${persona.id}" tabindex="-1"
+    role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header bg-danger">
+                <h5 class="modal-title" style="color: white;">Advertencia:</h5>
+            </div>
+            <div class="modal-body">¿Seguro que deseas eliminar este registro de la lista?</div>
+            <div class="modal-footer">
+                <a type="button" class="btn btn-success btn-confirm" th:href="@{/employees/actions/deleteEmployee=} + ${persona.id}" title="Confirmar"></a>
+                <button type="button" class="btn btn-light pull-left btn-cancel" data-bs-dismiss="modal" title="Cancelar"></button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Scripts -->
+<div th:fragment="scripts">
+    <!-- JS Bootstrap -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.4.js" integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" crossorigin="anonymous"></script>
+</div>
