@@ -19,7 +19,7 @@ public class employeeService implements InterfaceService {
 
     @Override
     public List<employeeModel> listAll() {        
-        return (List<employeeModel>)employeeRepository.findAll(); 
+        return (List<employeeModel>)employeeRepository.findAll();         
     }
     
     @Override
