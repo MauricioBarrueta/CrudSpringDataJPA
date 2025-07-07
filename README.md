@@ -1,6 +1,5 @@
-🇲🇽 Práctica de un sitio web el cual se conecta a una base de datos local y permite realizar las funciones CRUD, entre ellas, la de filtrar la lista de datos de acuerdo al nombre del usuario.
+🇲🇽 Sitio web desarrollado con Java, el framework Spring y las bibliotecas Thymeleaf e Hibernate, además de CSS y Bootstrap. Incluye pruebas unitarias básicas con JUnit 5 y Mockito y está conectado a una base de datos local MySQL.
 
-🇺🇸 Practice of a web site which connects to a local database and allows to perform CRUD functions, including filtering the list of data according to the user's name.
+🇺🇸 Website developed with Java, the Spring framework and the Thymeleaf and Hibernate libraries, as well as CSS and Bootstrap. It includes basic unit tests with JUnit 5 and Mockito and is connected to a local MySQL database.
 
-
-![SpringCRUD](https://github.com/MauricioBarrueta/CrudSpringDataJPA/assets/60496232/24403d76-fe73-4930-bd2c-11d2bca45747)
+![unit-test](https://github.com/user-attachments/assets/74a07e52-f3c2-4bd9-bd73-aad6f92e235f)
